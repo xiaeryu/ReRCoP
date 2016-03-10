@@ -2,7 +2,6 @@ ReRCoP
 ===
 Recombination Removal for Core-genome Phylogeny
 
-
 Prerequisites
 ---
 1. Linux environment  
@@ -22,13 +21,15 @@ Options:
     -h, --help          show this help message and exit
 
   Input Options:
-    -a, --aligned       Set this if genome sequences in the input file are already aligned.  
+    -a, --aligned       Set this if genome sequences in the input file are
+                        already aligned.  
                         # For aligned genomes
 
     --gbk=GBK           Input GenBank file of the reference genome.  
                         # For aligned genomes using core genome approach
 
-    -w, --window        Set this if sliding windows instead of genes are to be considered.  
+    -w, --window        Set this if sliding windows instead of genes are to be
+                        considered.  
                         # For aligned genomes using complete genome approach
 
     --fSize=FSIZE       Fragment size if using sliding window. [Default: 1000]  
@@ -37,33 +38,49 @@ Options:
     --sSize=SSIZE       Step size if using sliding window. [Default: 500]  
                         # For aligned genomes using complete genome approach
 
-    --cds=CDS           Input coding sequences in fasta format. Used to determine the core genome when input genomes are not aligned.  
+    --cds=CDS           Input coding sequences in fasta format. Used to determine
+                        the core genome when input genomes are not aligned.  
                         # For unaligned genomes using core genome approach
 
   Core Gene Identification Options:
-    --cov=COV           Minimum sequence coverage to regard genes as present. [Default: 0.7]  
-                        # For aligned or unaligned genomes using core genome approach
+    --cov=COV           Minimum sequence coverage to regard genes as present.
+                        [Default: 0.7]  
+                        # For aligned or unaligned genomes using core genome
+                        # approach
 
-    --sim=SIM           Minimum sequence similarity to regard genes as present [Default: 70]  
+    --sim=SIM           Minimum sequence similarity to regard genes as present.
+                        [Default: 70]  
                         # For unaligned genomes using core genome approach
 
   Outlier Removal Options:
     -m METHOD, --method=METHOD
-                        Outlier removal method. Can be 'Grubbs', 'kNN', or 'DBSCAN', or can be multiple methods separated by ','
+                        Outlier removal method. Can be 'Grubbs', 'kNN', or
+                        'DBSCAN', or can be multiple methods separated by ','.
 
-    --alpha=ALPHA       For 'Grubbs' method: Significance level in Grubbs test. [Default: 0.05]
+    --alpha=ALPHA       For 'Grubbs' method: Significance level in Grubbs test.
+                        [Default: 0.05]
 
-    --radius=RADIUS     For 'kNN' method: Maximum number of differences for a point to be considered as a neighbor (in the unit of standard deviation of all pair-wise nubmer of differences). [Default: 1.5)]
+    --radius=RADIUS     For 'kNN' method: Maximum number of differences for
+                        a point to be considered as a neighbor (in the unit of
+                        standard deviation of all pair-wise nubmer of differences
+                        ). [Default: 1.5)]
 
-    --k=K               For 'kNN' method: Minimum number of neighbors for a non-outlier point (in the unit of total number of points). [Default: 0.2]
+    --k=K               For 'kNN' method: Minimum number of neighbors for a 
+                        non-outlier point (in the unit of total number of points
+                        ). [Default: 0.2]
 
-    --eps=EPS           For 'DBSCAN' method: Maximum number of differences between two points for them to be considered as in the same neighborhood (in the unit of standard deviation of all pair-wise nubmer of differences). [Default: 1]
+    --eps=EPS           For 'DBSCAN' method: Maximum number of differences
+                        between two points for them to be considered as in the
+                        same neighborhood (in the unit of standard deviation of
+                        all pair-wise nubmer of differences). [Default: 1]
 
-    --minP=MINP         For 'DBSCAN' method: Minimum number of points required to form a dense region (in the unit of total number of points). [Default: 0.2]
+    --minP=MINP         For 'DBSCAN' method: Minimum number of
+                        points required to form a dense region (in the unit of
+                        total number of points). [Default: 0.2]
 
   Output Options:
-    -o OUTDIR, --outdir=OUTDIR           Output directory. [Default: running directory]
-    -p PREFIX, --prefix=PREFIX           Output prefix. [Default: ReRCoP]
+    -o OUTDIR, --outdir=OUTDIR    Output directory. [Default: running directory]
+    -p PREFIX, --prefix=PREFIX    Output prefix. [Default: ReRCoP]
 ```
 
 Input files
@@ -91,7 +108,7 @@ The following input files are required:
 2. A file in multiple nucleotide fasta format with genome sequences.
  * Complete sequences: Should be in fasta format.
  * Assembled contigs: Concatenate the contigs to form one fake genome sequence, which can be done with the script FormatContig.pl in ./scripts. Then concatenate all genome sequences or fake genome sequences to form a multiple-fasta file.
-```perl
+```shell
 		perl FormatContig.pl <contig fasta file> <header of the output fasta file> <output fasta file>
 ```
   
