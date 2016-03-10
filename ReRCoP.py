@@ -28,7 +28,7 @@ parser.add_option_group(group)
 
 group = OptionGroup(parser, "Core Gene Identification Options")
 group.add_option("--cov",action="store",type="float",dest="cov",default=0.7,help="Minimum sequence coverage to regard genes as present [Default: 0.7]")
-group.add_option("--sim",action="store",type="int",dest="sim",default=70,help="Minimum sequence similarity to regardi genes as present [Default: 70]")
+group.add_option("--sim",action="store",type="int",dest="sim",default=70,help="Minimum sequence similarity to regard genes as present [Default: 70]")
 parser.add_option_group(group)
 
 group = OptionGroup(parser, "Outlier Removal Options")
